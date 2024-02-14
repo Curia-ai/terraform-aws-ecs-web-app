@@ -10,6 +10,12 @@ variable "ecr_enabled" {
   default     = true
 }
 
+variable "codepipeline_codestar_connection_arn" {
+  type        = string
+  default     = ""
+  description = "The ARN of the AWS CodeStar Connection created with AWS CodeStar or the ARN of the GitHub or Bitbucket connection"
+}
+
 variable "codepipeline_enabled" {
   type        = bool
   description = "A boolean to enable/disable AWS Codepipeline. If `false`, use `ecr_enabled` to control if AWS ECR stays enabled."
@@ -728,12 +734,6 @@ variable "ecs_private_subnet_ids" {
 variable "github_oauth_token" {
   type        = string
   description = "GitHub Oauth Token with permissions to access private repositories"
-  default     = ""
-}
-
-variable "github_webhooks_token" {
-  type        = string
-  description = "GitHub OAuth Token with permissions to create webhooks. If not provided, can be sourced from the `GITHUB_TOKEN` environment variable"
   default     = ""
 }
 
